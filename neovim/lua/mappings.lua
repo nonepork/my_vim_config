@@ -14,6 +14,9 @@ vim.keymap.set('n', '<C-n>', '')
 vim.keymap.set({ 'n', 'v' }, 'j', 'gj')
 vim.keymap.set({ 'n', 'v' }, 'k', 'gk')
 
+vim.keymap.set('n', 'ss', '<cmd>split<CR>', { desc = 'Split horizontally', noremap = true, silent = true })
+vim.keymap.set('n', 'sv', '<cmd>vsplit<CR>', { desc = 'Split vertically', noremap = true, silent = true })
+
 -- stolen from and-rs
 vim.keymap.set('v', '<', "<gv<C-o>'<", { desc = 'Inner indent while remaining in visual mode' })
 vim.keymap.set('v', '>', ">gv<C-o>'<", { desc = 'Outer indent while remaining in visual mode' })
@@ -43,7 +46,34 @@ vim.keymap.set('n', '<C-right>', '3<C-w>>', { desc = 'Increase horizontal window
 
 vim.keymap.set('n', '<Tab>', '<cmd>bnext<CR>', { desc = 'Next tab', noremap = true, silent = true })
 vim.keymap.set('n', '<S-Tab>', '<cmd>bprev<CR>', { desc = 'Previous tab', noremap = true, silent = true })
-vim.keymap.set('n', 'C', '<cmd>bd<CR>', { desc = 'Close buffer unsmartly', noremap = true, silent = true })
+vim.keymap.set('n', 'C', function()
+  local current_buf = vim.api.nvim_get_current_buf()
+  local wins = vim.api.nvim_list_wins()
+
+  -- Count how many windows are showing this buffer
+  local buf_wins = {}
+  for _, win in ipairs(wins) do
+    if vim.api.nvim_win_get_buf(win) == current_buf then
+      table.insert(buf_wins, win)
+    end
+  end
+
+  local total_wins = #wins
+  local buf_win_count = #buf_wins
+
+  if total_wins > 1 then
+    if buf_win_count > 1 then
+      -- Case 3: same buffer in multiple windows → close only window
+      vim.cmd 'close'
+    else
+      -- Case 2: different buffers → close window + buffer
+      vim.cmd 'bd'
+    end
+  else
+    -- Case 1: single window → just delete buffer
+    vim.cmd 'bd'
+  end
+end, { desc = 'Smart close buffer/window', noremap = true, silent = true })
 
 vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', { desc = 'Toggle nvim-tree', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>gi', '<cmd>GuessIndent<CR>', { desc = '[G]uess [I]ndent' })
