@@ -2,12 +2,8 @@
 
 ![](preview.png)
 
-Rewritten from kickstart.nvim :))))
+Rewritten from kickstart.nvim :DDDD
 
 ### Prerequisite:
 
-- ripgrep
-- git
-- tree-sitter-cli
-- npm, python, go, et cetera (for lsps and formatters)
-- gnuwin32 (If you're on windows)
+[basically everything in here](https://github.com/nvim-lua/kickstart.nvim#install-external-dependencies)
