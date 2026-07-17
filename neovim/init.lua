@@ -109,9 +109,14 @@ do
     },
   }
 
-  vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
-  -- vim.keymap.set('n', '<leader>qd', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>', { desc = 'Buffer Diagnostics (Trouble)', noremap = true, silent = true })
-  -- vim.keymap.set('n', '<leader>qt', '<cmd>Trouble todo toggle<cr>', { desc = 'Todo List (Trouble)', noremap = true, silent = true })
+  -- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+  vim.keymap.set(
+    'n',
+    '<leader>qd',
+    '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',
+    { desc = 'Buffer Diagnostics (Trouble)', noremap = true, silent = true }
+  )
+  vim.keymap.set('n', '<leader>qt', '<cmd>Trouble todo toggle<cr>', { desc = 'Todo List (Trouble)', noremap = true, silent = true })
 
   vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
   vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
@@ -121,32 +126,6 @@ do
 
   vim.keymap.set('n', '<Tab>', '<cmd>bnext<CR>', { desc = 'Next tab', noremap = true, silent = true })
   vim.keymap.set('n', '<S-Tab>', '<cmd>bprev<CR>', { desc = 'Previous tab', noremap = true, silent = true })
-  vim.keymap.set('n', 'C', function()
-    local current_buf = vim.api.nvim_get_current_buf()
-    local wins = vim.api.nvim_list_wins()
-
-    -- Count how many windows are showing this buffer
-    local buf_wins = {}
-    for _, win in ipairs(wins) do
-      if vim.api.nvim_win_get_buf(win) == current_buf then table.insert(buf_wins, win) end
-    end
-
-    local total_wins = #wins
-    local buf_win_count = #buf_wins
-
-    if total_wins > 1 then
-      if buf_win_count > 1 then
-        -- Case 3: same buffer in multiple windows → close only window
-        vim.cmd 'close'
-      else
-        -- Case 2: different buffers → close window + buffer
-        vim.cmd 'bd'
-      end
-    else
-      -- Case 1: single window → just delete buffer
-      vim.cmd 'bd'
-    end
-  end, { desc = 'Smart close buffer/window', noremap = true, silent = true })
 
   --  vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', { desc = 'Toggle nvim-tree', noremap = true, silent = true })
   vim.keymap.set('n', '<leader>gi', '<cmd>GuessIndent<CR>', { desc = '[G]uess [I]ndent' })
@@ -266,6 +245,9 @@ do
   --   },
   -- }
   vim.pack.add { gh 'vague-theme/vague.nvim' }
+  require('vague').setup {
+    transparent = true,
+  }
   vim.cmd.colorscheme 'vague'
 
   vim.pack.add { gh 'folke/todo-comments.nvim' }
@@ -310,7 +292,37 @@ do
   require('mini.surround').setup()
 
   require('mini.bufremove').setup()
+  vim.keymap.set('n', 'C', function()
+    local current_buf = vim.api.nvim_get_current_buf()
+    local wins = vim.api.nvim_list_wins()
+
+    -- Count how many windows are showing this buffer
+    local buf_wins = {}
+    for _, win in ipairs(wins) do
+      if vim.api.nvim_win_get_buf(win) == current_buf then table.insert(buf_wins, win) end
+    end
+
+    local total_wins = #wins
+    local buf_win_count = #buf_wins
+
+    if total_wins > 1 then
+      if buf_win_count > 1 then
+        -- Case 3: same buffer in multiple windows → close only window
+        vim.cmd 'close'
+      else
+        -- Case 2: different buffers → close window + buffer
+        vim.cmd 'lua MiniBufremove.delete()'
+      end
+    else
+      -- Case 1: single window → just delete buffer
+      vim.cmd 'lua MiniBufremove.delete()'
+    end
+  end, { desc = 'Smart close buffer/window', noremap = true, silent = true })
+
   require('mini.splitjoin').setup()
+  -- require('mini.indentscope').setup {
+  --   symbol = '│',
+  -- }
 
   local statusline = require 'mini.statusline'
   statusline.setup {
@@ -597,7 +609,14 @@ do
   -- and elegantly composed help section, `:help lsp-vs-treesitter`
 
   vim.pack.add { gh 'j-hui/fidget.nvim' }
-  require('fidget').setup {}
+  require('fidget').setup {
+    notification = {
+      window = {
+        winblend = 0,
+        border = 'single',
+      },
+    },
+  }
 
   --  This runs when an LSP attaches to a particular buffer.
   vim.api.nvim_create_autocmd('LspAttach', {
@@ -673,10 +692,10 @@ do
             checkThirdParty = false,
             -- NOTE: this is a lot slower and will cause issues when working on your own configuration.
             --  See https://github.com/neovim/nvim-lspconfig/issues/3189
-            library = vim.tbl_extend('force', vim.api.nvim_get_runtime_file('', true), {
-              '${3rd}/luv/library',
-              '${3rd}/busted/library',
-            }),
+            -- library = vim.tbl_extend('force', vim.api.nvim_get_runtime_file('', true), {
+            --   '${3rd}/luv/library',
+            --   '${3rd}/busted/library',
+            -- }),
           },
         })
       end,
@@ -728,6 +747,9 @@ do
     vim.lsp.config(name, server)
     -- vim.lsp.enable(name)
   end
+
+  -- An alias for :checkhealth vim.lsp
+  vim.api.nvim_create_user_command('LspInfo', function() vim.cmd 'checkhealth vim.lsp' end, { desc = 'Show information about lsps' })
 end
 
 -- ============================================================
@@ -943,7 +965,6 @@ do
   -- require 'kickstart.plugins.debug'
   -- require 'kickstart.plugins.indent_line'
   -- require 'kickstart.plugins.lint'
-  -- require 'kickstart.plugins.autopairs'
   require 'kickstart.plugins.neo-tree'
   require 'kickstart.plugins.gitsigns' -- adds gitsigns recommended keymaps
 
@@ -967,12 +988,31 @@ do
 
   vim.pack.add { gh 'folke/lazydev.nvim' }
   require('lazydev').setup {
-    -- NOTE: is this needed? And should this be put before lsp?
+    -- NOTE: idk if this is correctly configured or not.
     --
-    -- library = {
-    --   { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
-    -- },
+    library = {
+      { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+      { path = '${3rd}/busted/library', words = { 'describe', 'it', 'before_each', 'after_each' } },
+    },
   }
+
+  vim.pack.add { gh 'folke/trouble.nvim' }
+  require('trouble').setup()
+
+  vim.pack.add { gh 'jtprogru/pack-ui.nvim' }
+
+  vim.pack.add { gh 'saghen/blink.indent' }
+  require('blink.indent').setup {
+    static = {
+      char = '▏',
+    },
+    scope = {
+      char = '▏',
+      highlights = { 'Special' },
+    },
+  }
+
+  require('vim._core.ui2').enable {}
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
