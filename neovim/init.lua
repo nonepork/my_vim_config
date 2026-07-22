@@ -1016,6 +1016,9 @@ do
     },
   }
 
+  -- vim.pack.add { gh 'noisesfromspace/touchup.nvim' }
+  -- require('touchup').setup()
+
   require('vim._core.ui2').enable {}
 end
 
