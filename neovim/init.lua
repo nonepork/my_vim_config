@@ -1003,6 +1003,10 @@ do
 
   vim.pack.add { gh 'saghen/blink.indent' }
   require('blink.indent').setup {
+    mappings = {
+      object_scope = '',
+      object_scope_with_border = '',
+    },
     static = {
       char = '▏',
     },
