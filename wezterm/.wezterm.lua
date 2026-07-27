@@ -21,14 +21,15 @@ config.launch_menu = {
 -- Appearances
 
 local tokyonightmoon = wezterm.color.get_builtin_schemes()["tokyonight_moon"]
-tokyonightmoon.background = "#070707"
+tokyonightmoon.background = "#0b0b0f"
 
 config.color_schemes = {
 	["dark_tokyonight_moon"] = tokyonightmoon,
 }
 config.color_scheme = "dark_tokyonight_moon"
-config.font = wezterm.font("Iosevka Nerd Font", { weight = "Regular" })
+config.font = wezterm.font("Iosevka Nerd Font")
 config.font_size = 12
+config.line_height = 1.1
 config.cell_width = 1
 
 -- config.enable_tab_bar = false
@@ -40,12 +41,10 @@ config.default_cursor_style = "BlinkingBar"
 config.animation_fps = 1
 config.cursor_blink_rate = 550
 
-config.max_fps = 60
+config.max_fps = 144
 
 config.term = "xterm-256color"
-
-config.window_background_opacity = 0.9
-config.win32_system_backdrop = "Acrylic"
+config.front_end = "WebGpu"
 
 -- Tmux like settings
 -- https://www.youtube.com/watch?v=V1X4WQTaxrc
