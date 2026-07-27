@@ -267,11 +267,16 @@ do
   --  - va)  - [V]isually select [A]round [)]paren
   --  - yiiq - [Y]ank [I]nside [I]+1 [Q]uote
   --  - ci'  - [C]hange [I]nside [']quote
+  vim.pack.add { gh 'nvim-treesitter/nvim-treesitter-textobjects' } -- For function textobjects
   require('mini.ai').setup {
     -- NOTE: Avoid conflicts with the built-in incremental selection mappings on Neovim>=0.12 (see `:help treesitter-incremental-selection`)
     mappings = {
       around_next = 'aa',
       inside_next = 'ii',
+    },
+    custom_textobjects = {
+      f = require('mini.ai').gen_spec.treesitter { a = '@function.outer', i = '@function.inner' },
+      c = require('mini.ai').gen_spec.treesitter { a = '@class.outer', i = '@class.inner' },
     },
     n_lines = 500,
   }
@@ -296,6 +301,11 @@ do
     local current_buf = vim.api.nvim_get_current_buf()
     local wins = vim.api.nvim_list_wins()
 
+    if vim.bo[current_buf].filetype == 'help' then
+      vim.cmd 'q'
+      return
+    end
+
     -- Count how many windows are showing this buffer
     local buf_wins = {}
     for _, win in ipairs(wins) do
@@ -311,11 +321,11 @@ do
         vim.cmd 'close'
       else
         -- Case 2: different buffers → close window + buffer
-        vim.cmd 'lua MiniBufremove.delete()'
+        MiniBufremove.delete()
       end
     else
       -- Case 1: single window → just delete buffer
-      vim.cmd 'lua MiniBufremove.delete()'
+      MiniBufremove.delete()
     end
   end, { desc = 'Smart close buffer/window', noremap = true, silent = true })
 
