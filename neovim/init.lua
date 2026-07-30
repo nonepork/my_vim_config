@@ -267,7 +267,7 @@ do
   --  - va)  - [V]isually select [A]round [)]paren
   --  - yiiq - [Y]ank [I]nside [I]+1 [Q]uote
   --  - ci'  - [C]hange [I]nside [']quote
-  vim.pack.add { gh 'nvim-treesitter/nvim-treesitter-textobjects' } -- For function textobjects
+  vim.pack.add { gh 'nvim-treesitter/nvim-treesitter-textobjects' } -- For textobjects
   require('mini.ai').setup {
     -- NOTE: Avoid conflicts with the built-in incremental selection mappings on Neovim>=0.12 (see `:help treesitter-incremental-selection`)
     mappings = {
@@ -301,7 +301,7 @@ do
     local current_buf = vim.api.nvim_get_current_buf()
     local wins = vim.api.nvim_list_wins()
 
-    if vim.bo[current_buf].filetype == 'help' then
+    if vim.bo[current_buf].filetype == 'help' or vim.bo[current_buf].filetype == 'atone' then
       vim.cmd 'q'
       return
     end
@@ -984,17 +984,27 @@ do
   -- require 'custom.plugins'
 
   -- Temporary adding undotree here, also shamelessly stolen from pawelgrzybek
-  vim.cmd.packadd { 'nvim.undotree' }
-  vim.keymap.set(
-    'n',
-    '<leader>u',
-    function()
-      require('undotree').open {
-        command = math.floor(vim.api.nvim_win_get_width(0) / 4) .. 'vnew',
-      }
-    end,
-    { desc = '[U]ndotree toggle' }
-  )
+  -- vim.cmd.packadd { 'nvim.undotree' }
+  -- vim.keymap.set(
+  --   'n',
+  --   '<leader>u',
+  --   function()
+  --     require('undotree').open {
+  --       command = math.floor(vim.api.nvim_win_get_width(0) / 4) .. 'vnew',
+  --     }
+  --   end,
+  --   { desc = '[U]ndotree toggle' }
+  -- )
+  vim.pack.add { gh 'XXiaoA/atone.nvim' }
+  require('atone').setup {
+    layout = {
+      direction = 'right',
+    },
+    ui = {
+      compact = true,
+    },
+  }
+  vim.keymap.set('n', '<leader>u', '<cmd>Atone toggle<CR>', { desc = '[U]ndotree toggle' })
 
   vim.pack.add { gh 'folke/lazydev.nvim' }
   require('lazydev').setup {
@@ -1028,6 +1038,9 @@ do
 
   -- vim.pack.add { gh 'noisesfromspace/touchup.nvim' }
   -- require('touchup').setup()
+
+  -- vim.pack.add { 'https://github.com/oskarnurm/koda.nvim' }
+  -- require('koda').setup {transparent = false,}
 
   require('vim._core.ui2').enable {}
 end
