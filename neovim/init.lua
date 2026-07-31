@@ -301,7 +301,13 @@ do
     local current_buf = vim.api.nvim_get_current_buf()
     local wins = vim.api.nvim_list_wins()
 
-    if vim.bo[current_buf].filetype == 'help' or vim.bo[current_buf].filetype == 'atone' then
+    local ignore_filetypes = {
+      ['help'] = true,
+      ['atone'] = true,
+    }
+
+    -- quit directly if in lists
+    if ignore_filetypes[vim.bo[current_buf].filetype] then
       vim.cmd 'q'
       return
     end
