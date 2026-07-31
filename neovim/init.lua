@@ -1001,16 +1001,9 @@ do
   --   end,
   --   { desc = '[U]ndotree toggle' }
   -- )
-  vim.pack.add { gh 'XXiaoA/atone.nvim' }
-  require('atone').setup {
-    layout = {
-      direction = 'right',
-    },
-    ui = {
-      compact = true,
-    },
-  }
-  vim.keymap.set('n', '<leader>u', '<cmd>Atone toggle<CR>', { desc = '[U]ndotree toggle' })
+  vim.pack.add { 'https://github.com/jiaoshijie/undotree' }
+  require('undotree').setup { position = 'right' }
+  vim.keymap.set('n', '<leader>u', require('undotree').toggle, { desc = '[U]ndotree toggle' })
 
   vim.pack.add { gh 'folke/lazydev.nvim' }
   require('lazydev').setup {
