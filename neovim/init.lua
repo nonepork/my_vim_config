@@ -1004,6 +1004,8 @@ do
   vim.pack.add { 'https://github.com/jiaoshijie/undotree' }
   require('undotree').setup { position = 'right' }
   vim.keymap.set('n', '<leader>u', require('undotree').toggle, { desc = '[U]ndotree toggle' })
+  -- NOTE: I really like the elegancy and simplicity of built-in undotree, gotta contribute
+  -- /figure out a way to implement diff for them
 
   vim.pack.add { gh 'folke/lazydev.nvim' }
   require('lazydev').setup {
