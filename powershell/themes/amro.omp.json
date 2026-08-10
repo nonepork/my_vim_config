@@ -21,7 +21,7 @@
             "fetch_status": true,
             "fetch_upstream_icon": true
           },
-          "template": "{{ .UpstreamIcon }} {{ .HEAD }}{{ if .Working.Changed }}<#CC6B49> {{ .Working.String }}</>{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} ",
+          "template": "{{ .UpstreamIcon }}  {{ .HEAD }}{{ if .Working.Changed }}<#CC6B49> {{ .Working.String }}</>{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} ",
           "foreground": "#95ffa4",
           "powerline_symbol": "\ue0b0",
           "type": "git",
