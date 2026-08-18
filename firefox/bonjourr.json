@@ -27,8 +27,8 @@
   "css": "",
   "hide": {
     "greetings": false,
-    "weatherdesc": false,
-    "weathericon": true,
+    "weatherdesc": true,
+    "weathericon": false,
     "settingsicon": true
   },
   "linkstyle": "medium",
@@ -47,8 +47,8 @@
   "backgrounds": {
     "type": "images",
     "fadein": 600,
-    "blur": 1,
-    "bright": 0.8,
+    "blur": 16,
+    "bright": 0.87,
     "frequency": "hour",
     "color": "#185A63",
     "urls": "",
@@ -56,7 +56,9 @@
     "videos": "bonjourr-videos-daylight",
     "queries": {},
     "texture": {
-      "type": "none"
+      "type": "grain",
+      "opacity": 0.06,
+      "size": 230
     }
   },
   "clock": {
@@ -94,8 +96,8 @@
   },
   "notes": {
     "on": false,
-    "width": 40,
     "opacity": 0.1,
+    "width": 40,
     "align": "left",
     "text": "## Edit this note!\n\n[ ] With markdown titles, lists, and checkboxes\n\n[ ] Learn more on https://bonjourr.fr/docs/overview"
   },
@@ -113,7 +115,7 @@
     "type": "classic",
     "frequency": "day",
     "author": true,
-    "last": 1786983899486
+    "last": 1787069154370
   },
   "pomodoro": {
     "on": false,
@@ -153,39 +155,6 @@
       }
     }
   },
-  "linkspirlfg": {
-    "_id": "linkspirlfg",
-    "parent": "default",
-    "order": 5,
-    "title": "",
-    "url": "https://www.notion.so/the-game-is-on/6a4864b969cb4fc3913d6867bf970ddd?v=bf4ad8ca3bfb4138b8cc217362d3a63c",
-    "icon": {
-      "type": "auto",
-      "value": "https://services.bonjourr.fr/favicon/blob/https://www.notion.so/the-game-is-on/6a4864b969cb4fc3913d6867bf970ddd?v=bf4ad8ca3bfb4138b8cc217362d3a63c?r=1771859952901"
-    }
-  },
-  "linksghfrhi": {
-    "_id": "linksghfrhi",
-    "parent": "default",
-    "order": 2,
-    "title": "",
-    "url": "https://discord.com/channels/@me",
-    "icon": {
-      "type": "auto",
-      "value": "https://services.bonjourr.fr/favicon/blob/https://discord.com/channels/@me?r=1786947002394"
-    }
-  },
-  "linksqdfqno": {
-    "_id": "linksqdfqno",
-    "parent": "default",
-    "order": 1,
-    "title": "",
-    "url": "https://www.facebook.com/messages/",
-    "icon": {
-      "type": "auto",
-      "value": "https://services.bonjourr.fr/favicon/blob/https://www.facebook.com/messages/?r=1783347165271"
-    }
-  },
   "linkskanfid": {
     "_id": "linkskanfid",
     "parent": "default",
@@ -208,6 +177,17 @@
       "value": "https://services.bonjourr.fr/favicon/blob/https://chat.openai.com/?r=1783350600824"
     }
   },
+  "linkspirlfg": {
+    "_id": "linkspirlfg",
+    "parent": "default",
+    "order": 5,
+    "title": "",
+    "url": "https://www.notion.so/the-game-is-on/6a4864b969cb4fc3913d6867bf970ddd?v=bf4ad8ca3bfb4138b8cc217362d3a63c",
+    "icon": {
+      "type": "auto",
+      "value": "https://services.bonjourr.fr/favicon/blob/https://www.notion.so/the-game-is-on/6a4864b969cb4fc3913d6867bf970ddd?v=bf4ad8ca3bfb4138b8cc217362d3a63c?r=1771859952901"
+    }
+  },
   "linksjhlhgl": {
     "_id": "linksjhlhgl",
     "parent": "default",
@@ -217,6 +197,28 @@
     "icon": {
       "type": "auto",
       "value": "https://services.bonjourr.fr/favicon/blob/https://www.youtube.com?r=1783347234374"
+    }
+  },
+  "linksghfrhi": {
+    "_id": "linksghfrhi",
+    "parent": "default",
+    "order": 2,
+    "title": "",
+    "url": "https://discord.com/channels/@me",
+    "icon": {
+      "type": "auto",
+      "value": "https://services.bonjourr.fr/favicon/blob/https://discord.com/channels/@me?r=1786947002394"
+    }
+  },
+  "linksqdfqno": {
+    "_id": "linksqdfqno",
+    "parent": "default",
+    "order": 1,
+    "title": "",
+    "url": "https://www.facebook.com/messages/",
+    "icon": {
+      "type": "auto",
+      "value": "https://services.bonjourr.fr/favicon/blob/https://www.facebook.com/messages/?r=1783347165271"
     }
   }
 }
