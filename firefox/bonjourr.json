@@ -79,6 +79,7 @@
   "weather": {
     "city": "tauyuan-village",
     "unit": "metric",
+    "show_unit": false,
     "provider": "",
     "moreinfo": "none",
     "forecast": "auto",
@@ -126,13 +127,16 @@
     },
     "focus": false,
     "sound": true,
+    "volume": "marimba",
+    "alarm": "marimba",
     "history": []
   },
   "font": {
+    "color": "#ffffff",
     "size": "14",
     "family": "Zen Maru Gothic",
     "system": false,
-    "weightlist": ["300", "400", "500", "700", "900"],
+    "weightlist": [],
     "weight": "400"
   },
   "supporters": {
@@ -147,6 +151,17 @@
         "items": {},
         "grid": [["main"], ["quicklinks"]]
       }
+    }
+  },
+  "linkspirlfg": {
+    "_id": "linkspirlfg",
+    "parent": "default",
+    "order": 5,
+    "title": "",
+    "url": "https://www.notion.so/the-game-is-on/6a4864b969cb4fc3913d6867bf970ddd?v=bf4ad8ca3bfb4138b8cc217362d3a63c",
+    "icon": {
+      "type": "auto",
+      "value": "https://services.bonjourr.fr/favicon/blob/https://www.notion.so/the-game-is-on/6a4864b969cb4fc3913d6867bf970ddd?v=bf4ad8ca3bfb4138b8cc217362d3a63c?r=1771859952901"
     }
   },
   "linksghfrhi": {
@@ -191,17 +206,6 @@
     "icon": {
       "type": "auto",
       "value": "https://services.bonjourr.fr/favicon/blob/https://chat.openai.com/?r=1783350600824"
-    }
-  },
-  "linkspirlfg": {
-    "_id": "linkspirlfg",
-    "parent": "default",
-    "order": 5,
-    "title": "",
-    "url": "https://www.notion.so/the-game-is-on/6a4864b969cb4fc3913d6867bf970ddd?v=bf4ad8ca3bfb4138b8cc217362d3a63c",
-    "icon": {
-      "type": "auto",
-      "value": "https://services.bonjourr.fr/favicon/blob/https://www.notion.so/the-game-is-on/6a4864b969cb4fc3913d6867bf970ddd?v=bf4ad8ca3bfb4138b8cc217362d3a63c?r=1771859952901"
     }
   },
   "linksjhlhgl": {
