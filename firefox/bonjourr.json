@@ -1,7 +1,11 @@
 {
   "about": {
     "browser": "firefox",
-    "version": "22.0.0"
+    "version": "22.3.0"
+  },
+  "advanced": {
+    "altMode": true,
+    "escKey": true
   },
   "showall": true,
   "lang": "ja",
@@ -108,7 +112,7 @@
     "type": "classic",
     "frequency": "day",
     "author": true,
-    "last": 1777827225787
+    "last": 1786983899486
   },
   "pomodoro": {
     "on": false,
@@ -145,17 +149,6 @@
       }
     }
   },
-  "linksjhlhgl": {
-    "_id": "linksjhlhgl",
-    "parent": "default",
-    "order": 0,
-    "title": "",
-    "url": "https://www.youtube.com",
-    "icon": {
-      "type": "auto",
-      "value": "https://services.bonjourr.fr/favicon/blob/https://www.youtube.com?r=1771859948925"
-    }
-  },
   "linksghfrhi": {
     "_id": "linksghfrhi",
     "parent": "default",
@@ -164,7 +157,7 @@
     "url": "https://discord.com/channels/@me",
     "icon": {
       "type": "auto",
-      "value": "https://services.bonjourr.fr/favicon/blob/https://discord.com/channels/@me?r=1775130219971"
+      "value": "https://services.bonjourr.fr/favicon/blob/https://discord.com/channels/@me?r=1786947002394"
     }
   },
   "linksqdfqno": {
@@ -175,18 +168,7 @@
     "url": "https://www.facebook.com/messages/",
     "icon": {
       "type": "auto",
-      "value": "https://services.bonjourr.fr/favicon/blob/https://www.facebook.com/messages/?r=1771859946682"
-    }
-  },
-  "linkspdeiod": {
-    "_id": "linkspdeiod",
-    "parent": "default",
-    "order": 3,
-    "title": "",
-    "url": "https://chat.openai.com/",
-    "icon": {
-      "type": "auto",
-      "value": "https://services.bonjourr.fr/favicon/blob/https://chat.openai.com/?r=1771859950346"
+      "value": "https://services.bonjourr.fr/favicon/blob/https://www.facebook.com/messages/?r=1783347165271"
     }
   },
   "linkskanfid": {
@@ -200,6 +182,17 @@
       "value": "https://services.bonjourr.fr/favicon/blob/https://claude.ai/?r=1771859951645"
     }
   },
+  "linkspdeiod": {
+    "_id": "linkspdeiod",
+    "parent": "default",
+    "order": 3,
+    "title": "",
+    "url": "https://chat.openai.com/",
+    "icon": {
+      "type": "auto",
+      "value": "https://services.bonjourr.fr/favicon/blob/https://chat.openai.com/?r=1783350600824"
+    }
+  },
   "linkspirlfg": {
     "_id": "linkspirlfg",
     "parent": "default",
@@ -210,6 +203,16 @@
       "type": "auto",
       "value": "https://services.bonjourr.fr/favicon/blob/https://www.notion.so/the-game-is-on/6a4864b969cb4fc3913d6867bf970ddd?v=bf4ad8ca3bfb4138b8cc217362d3a63c?r=1771859952901"
     }
+  },
+  "linksjhlhgl": {
+    "_id": "linksjhlhgl",
+    "parent": "default",
+    "order": 0,
+    "title": "",
+    "url": "https://www.youtube.com",
+    "icon": {
+      "type": "auto",
+      "value": "https://services.bonjourr.fr/favicon/blob/https://www.youtube.com?r=1783347234374"
+    }
   }
 }
-
