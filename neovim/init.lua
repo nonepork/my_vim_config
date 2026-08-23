@@ -143,6 +143,10 @@ do
     group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
     callback = function() vim.hl.on_yank() end,
   })
+
+  -- [[ Editorconfig custom properties ]]
+  local ok, editorconfig = pcall(require, 'editorconfig')
+  if ok then editorconfig.properties.commentstring = function(bufnr, val) vim.bo[bufnr].commentstring = val end end
 end
 
 -- ============================================================
