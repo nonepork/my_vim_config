@@ -865,7 +865,7 @@ do
   -- vim.pack.add { 'https://github.com/oskarnurm/koda.nvim' }
   -- require('koda').setup {transparent = false,}
 
-  require('vim._core.ui2').enable {}
+  pcall(require('vim._core.ui2').enable, {})
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
