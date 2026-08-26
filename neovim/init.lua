@@ -1025,7 +1025,8 @@ do
   vim.pack.add { gh 'folke/trouble.nvim' }
   require('trouble').setup()
 
-  vim.pack.add { gh 'jtprogru/pack-ui.nvim' }
+  -- NOTE: change this back once merged
+  vim.pack.add { gh 'nonepork/pack-ui.nvim' }
 
   vim.pack.add { gh 'saghen/blink.indent' }
   require('blink.indent').setup {
