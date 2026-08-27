@@ -1,3 +1,5 @@
+local gh = require('utils').gh
+
 -- Neo-tree is a Neovim plugin to browse the file system
 -- https://github.com/nvim-neo-tree/neo-tree.nvim
 
@@ -8,3 +10,5 @@ vim.pack.add {
 }
 
 vim.keymap.set('n', '<leader>e', '<Cmd>Neotree toggle<CR>', { desc = 'Toggle Neotree', noremap = true, silent = true })
+
+-- vim: ts=2 sts=2 sw=2 et
