@@ -11,5 +11,10 @@ require 'plugins.conform'
 require 'plugins.snippets'
 require 'plugins.blink'
 require 'plugins.treesitter'
+require 'plugins.undotree'
+require 'plugins.lazydev'
+require 'plugins.trouble'
+require 'plugins.pack-ui'
+require 'plugins.blink-indent'
 
 -- vim: ts=2 sts=2 sw=2 et
