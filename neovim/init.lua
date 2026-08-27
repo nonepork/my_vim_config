@@ -1,32 +1,12 @@
--- ============================================================
--- SECTION 1: OPTIONS
--- Core Neovim settings, leaders, options
--- ============================================================
 require 'options'
-
--- ============================================================
--- SECTION 2: KEYMAPS & AUTOCMDS
--- basic keymaps, basic autocmds
--- ============================================================
 require 'keymaps'
 require 'autocmds'
-
--- ============================================================
--- SECTION 3: PLUGIN MANAGER INTRO
--- vim.pack intro, build hooks
--- ============================================================
 require 'pack'
 
----Because most plugins are hosted on GitHub, you can use the helper
----function to have less repetition in the following sections.
 ---@param repo string
 ---@return string
 local function gh(repo) return 'https://github.com/' .. repo end
 
--- ============================================================
--- SECTION 4: UI / CORE UX PLUGINS
--- guess-indent, gitsigns, which-key, colorscheme, todo-comments, mini modules
--- ============================================================
 require 'plugins'
 do
   -- [[ Installing and Configuring Plugins ]]
@@ -38,43 +18,8 @@ do
   --     comments = { italic = false },
   --   },
   -- }
-  vim.cmd.colorscheme 'vague'
 end
-
--- ============================================================
--- SECTION 5: SEARCH & NAVIGATION
--- Telescope setup, keymaps, LSP picker mappings
--- ============================================================
-do
-end
-
--- ============================================================
--- SECTION 6: LSP
--- LSP keymaps, server configuration, Mason tools installations
--- ============================================================
-do
-end
-
--- ============================================================
--- SECTION 7: FORMATTING
--- conform.nvim setup and keymap
--- ============================================================
-do
-end
-
--- ============================================================
--- SECTION 8: AUTOCOMPLETE & SNIPPETS
--- blink.cmp and luasnip setup
--- ============================================================
-do
-end
-
--- ============================================================
--- SECTION 9: TREESITTER
--- Parser installation, syntax highlighting, folds, indentation
--- ============================================================
-do
-end
+vim.cmd.colorscheme 'vague'
 
 -- ============================================================
 -- SECTION 10: OPTIONAL EXAMPLES / NEXT STEPS
